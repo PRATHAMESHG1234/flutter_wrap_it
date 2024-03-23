@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.0.12] - 2024-03-23
+
+### Changed
+
+- Updated the `BottomModalSheetWrapper` widget to allow for more customization options.
+- Fixed a minor issue with the `BottomModalSheet` widget's alignment parameter not being properly utilized.
+- Enhanced documentation comments for better clarity and understanding.
+
+# Changelog
+
 ## [0.0.11] - 2024-03-23
 
 ### Changed

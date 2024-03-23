@@ -1,27 +1,73 @@
-library package_hello;
+// ignore_for_file: must_be_immutable
+
+library flutter_wrap_it;
 
 import 'package:flutter/material.dart';
 
-class BottomModalSheetWraper extends StatelessWidget {
-  BuildContext context;
-  WidgetBuilder builder;
-  Color? backgroundColor;
-  String? barrierLabel;
-  double? elevation;
-  ShapeBorder? shape;
-  Clip? clipBehavior;
-  BoxConstraints? constraints;
-  Color? barrierColor;
-  bool isScrollControlled = false;
-  bool useRootNavigator = false;
-  bool isDismissible = true;
-  bool enableDrag = true;
-  bool? showDragHandle;
-  bool useSafeArea = false;
-  RouteSettings? routeSettings;
-  AnimationController? transitionAnimationController;
-  Offset? anchorPoint;
-  BottomModalSheetWraper({
+/// A wrapper widget for displaying a modal bottom sheet.
+///
+/// This widget provides a customizable interface for showing a modal bottom
+/// sheet. It can be used to display various content within a modal bottom sheet.
+class BottomModalSheetWrapper extends StatelessWidget {
+  /// The build context.
+  final BuildContext context;
+
+  /// The builder for the content of the bottom sheet.
+  final WidgetBuilder builder;
+
+  /// The background color of the bottom sheet.
+  final Color? backgroundColor;
+
+  /// The semantic label used by screen readers for the bottom sheet barrier.
+  final String? barrierLabel;
+
+  /// The elevation of the bottom sheet.
+  final double? elevation;
+
+  /// The shape of the bottom sheet.
+  final ShapeBorder? shape;
+
+  /// The clip behavior of the bottom sheet.
+  final Clip? clipBehavior;
+
+  /// The constraints for the bottom sheet.
+  final BoxConstraints? constraints;
+
+  /// The color of the barrier below the bottom sheet.
+  final Color? barrierColor;
+
+  /// Whether the bottom sheet should be scroll-controlled.
+  final bool isScrollControlled;
+
+  /// Whether the bottom sheet should be displayed using the root navigator.
+  final bool useRootNavigator;
+
+  /// Whether the bottom sheet can be dismissed by tapping on the barrier.
+  final bool isDismissible;
+
+  /// Whether dragging on the bottom sheet is enabled.
+  final bool enableDrag;
+
+  /// Whether to show a drag handle on the bottom sheet.
+  final bool? showDragHandle;
+
+  /// Whether to adjust the bottom sheet to fit the safe area.
+  final bool useSafeArea;
+
+  /// The route settings for the bottom sheet.
+  final RouteSettings? routeSettings;
+
+  /// The animation controller for the transition animation.
+  final AnimationController? transitionAnimationController;
+
+  /// The anchor point for the bottom sheet.
+  final Offset? anchorPoint;
+
+  /// Constructs a [BottomModalSheetWrapper] widget.
+  ///
+  /// The [context] and [builder] parameters are required. All other parameters
+  /// are optional and have default values.
+  BottomModalSheetWrapper({
     required this.context,
     required this.builder,
     this.backgroundColor,
@@ -41,6 +87,7 @@ class BottomModalSheetWraper extends StatelessWidget {
     this.transitionAnimationController,
     this.anchorPoint,
   }) {
+    // Show the modal bottom sheet when this widget is constructed.
     showModalBottomSheet(
       context: context,
       builder: builder,
@@ -62,8 +109,12 @@ class BottomModalSheetWraper extends StatelessWidget {
       anchorPoint: anchorPoint,
     );
   }
+
+  @override
   Widget build(BuildContext context) {
-    return SizedBox();
+    // This widget doesn't render anything directly, it's just used to trigger
+    // the display of the modal bottom sheet.
+    return const SizedBox();
   }
 }
 
@@ -189,10 +240,10 @@ class _BottomModalSheetState extends State<BottomModalSheet> {
     return Container(
       alignment: widget.alignment ?? Alignment.bottomCenter,
       padding: widget.padding ?? const EdgeInsets.all(16),
-      color: widget.color,
+      color: widget.decoration == null ? widget.color : null,
       decoration: widget.decoration,
       foregroundDecoration: widget.foregroundDecoration,
-      child: BottomModalSheetWraper(
+      child: BottomModalSheetWrapper(
           context: widget.context, builder: widget.builder),
     );
   }

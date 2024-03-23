@@ -1,6 +1,6 @@
 name: flutter_wrap_it
 description: "A Flutter package that provides wrapper classes for common Flutter methods."
-version: 0.0.11
+version: 0.0.12
 homepage: https://github.com/PRATHAMESHG1234/flutter_wrap_it.git
 
 environment:
